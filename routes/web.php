@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormHandler;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +23,12 @@ Route::get('/', function () {
 
 Route::view('test','test');
 
-Route::get('homepage','Home@index');
+Route::get('/home',[Home::class, 'index']);
+Route::get('/user/{id}',[UserController::class, 'index']);
+
+Route::view('sidebar','sidebar');
+
+Route::view('form','form');
+Route::post('formSubmit',[FormHandler::class, 'index']);
+
+

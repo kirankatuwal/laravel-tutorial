@@ -31,4 +31,16 @@ Route::view('sidebar','sidebar');
 Route::view('form','form');
 Route::post('formSubmit',[FormHandler::class, 'index']);
 
+Route::get('/learn', function () {
+    return view('learn',array('data'=>array('name'=>'Kiran')));
+});
+
+Route::view('blog','blogpage');
+
+
+// Middleware groups
+Route::group(['middleware'=>['userCheck']],function(){
+    Route::view('blog1','blogpage1');
+});
+Route::view('denied','denied');
 
